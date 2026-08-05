@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public string unitName;
+    public int unitLevel;
+
+    public int damage;
+
+    public int maxHP;
+    public int currentHP;
+
+    public bool TakeDamage(int damage)
     {
-        
+        currentHP -= damage;
+        if (currentHP <= 0)
+            return true; // Unit is dead
+        else
+            return false; // Unit is still alive
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Heal(int healAmount)
     {
-        
+        currentHP += healAmount;
+        if (currentHP > maxHP)
+            currentHP = maxHP;
     }
+
 }
