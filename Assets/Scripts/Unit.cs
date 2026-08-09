@@ -12,7 +12,6 @@ public class Unit : MonoBehaviour
     public int maxHP;
     public int currentHP;
 
-    // List of active status effects
     public List<StatusEffectZ> activeEffects = new List<StatusEffectZ>();
 
     public bool TakeDamage(int damage)
@@ -21,9 +20,9 @@ public class Unit : MonoBehaviour
         if (currentHP <= 0)
         {
             currentHP = 0;
-            return true; // Unit is dead
+            return true;
         }
-        return false; // Unit is still alive
+        return false;
     }
 
     public void Heal(int healAmount)
@@ -33,15 +32,13 @@ public class Unit : MonoBehaviour
             currentHP = maxHP;
     }
 
-    // Process effects matching the current phase (Start or End of turn)
-    public List<string> ProcessStatusEffects(StatusEffectZ.EffectTriggerTime triggerPhase)
+    public List<string> ProcessStatusEffects(EffectTriggerTime triggerPhase)
     {
         List<string> logs = new List<string>();
 
-        // Loop backwards so we can safely remove expired effects
         for (int i = activeEffects.Count - 1; i >= 0; i--)
         {
-            StatusEffectz effect = activeEffects[i];
+            StatusEffectZ effect = activeEffects[i];
 
             if (effect.triggerTime == triggerPhase)
             {
@@ -58,12 +55,11 @@ public class Unit : MonoBehaviour
                         break;
                 }
 
-                // Reduce duration after triggering
                 effect.duration--;
 
                 if (effect.duration <= 0)
                 {
-                    logs.Add($"{unitName}'s {effect.name} wore off!");
+                    logs.Add($"{unitName}'s {effect.effectName} wore off!");
                     activeEffects.RemoveAt(i);
                 }
             }

@@ -1,28 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusEffectZ : MonoBehaviour
-{
-    public enum EffectTriggerTime { StartOfTurn, EndOfTurn }
+// These enums must be outside the class
+public enum EffectTriggerTime { StartOfTurn, EndOfTurn }
 public enum StatusType { Poison, Regeneration, Stun }
 
 [System.Serializable]
-public class StatusEffectz
+public class StatusEffectZ
 {
-    public string name;
+    public string effectName; // Renamed from 'name' to avoid any conflict with UnityEngine.Object.name
     public StatusType type;
     public EffectTriggerTime triggerTime;
-    public int duration; // In turns
-    public int power;    // Damage or healing amount per turn
+    public int duration;
+    public int power;
 
-    public StatusEffectz(string name, StatusType type, EffectTriggerTime triggerTime, int duration, int power)
+    // The constructor name MUST match the class name exactly: StatusEffectZ
+    public StatusEffectZ(string effectName, StatusType type, EffectTriggerTime triggerTime, int duration, int power)
     {
-        this.name = name;
+        this.effectName = effectName;
         this.type = type;
         this.triggerTime = triggerTime;
         this.duration = duration;
         this.power = power;
     }
-}
 }

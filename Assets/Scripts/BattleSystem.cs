@@ -42,9 +42,9 @@ public class BattleSystem : MonoBehaviour
 
         // --- DEMO STATUS EFFECTS ---
         // Poison: Triggers at START of turn (5 damage, 3 turns)
-        playerUnit.activeEffects.Add(new StatusEffectZ.StatusEffectz("Poison", StatusEffectZ.StatusType.Poison, StatusEffectZ.EffectTriggerTime.StartOfTurn, 3, 5));
+        playerUnit.activeEffects.Add(new StatusEffectZ("Poison", StatusType.Poison, EffectTriggerTime.StartOfTurn, 3, 5));
         // Regen: Triggers at END of turn (3 heal, 2 turns)
-        playerUnit.activeEffects.Add(new StatusEffectZ.StatusEffectz("Regen", StatusEffectZ.StatusType.Regeneration, StatusEffectZ.EffectTriggerTime.EndOfTurn, 2, 3));
+        playerUnit.activeEffects.Add(new StatusEffectZ("Regen", StatusType.Regeneration, EffectTriggerTime.EndOfTurn, 2, 3));
 
         dialogueText.text = "A wild " + enemyUnit.unitName + " approaches...";
 
