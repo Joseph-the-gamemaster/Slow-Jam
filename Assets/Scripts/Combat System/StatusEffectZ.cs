@@ -2,7 +2,7 @@ using UnityEngine;
 
 // These enums must be outside the class
 public enum EffectTriggerTime { StartOfTurn, EndOfTurn }
-public enum StatusType { Poison, Regeneration, Stun }
+public enum StatusType { Poison, Regeneration, Stun, Burn }
 
 [System.Serializable]
 public class StatusEffectZ
