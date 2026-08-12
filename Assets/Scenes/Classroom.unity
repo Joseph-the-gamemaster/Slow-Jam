@@ -1478,6 +1478,7 @@ GameObject:
   - component: {fileID: 1919828284}
   - component: {fileID: 1919828286}
   - component: {fileID: 1919828285}
+  - component: {fileID: 1919828287}
   m_Layer: 5
   m_Name: SpeakText
   m_TagString: Untagged
@@ -1601,6 +1602,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919828283}
   m_CullTransparentMesh: 1
+--- !u!114 &1919828287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919828283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2aa41bd6e1efb4287667803845b93f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transferText: 
+  internalCount: 0
 --- !u!1 &1963390735
 GameObject:
   m_ObjectHideFlags: 0
