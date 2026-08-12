@@ -10,6 +10,8 @@ public class Scene01Events : MonoBehaviour
     public GameObject TextBox;
     [SerializeField] AudioSource GirlSigh;
     [SerializeField] AudioSource GirlGasp;
+
+    
     void Start()
     {
         StartCoroutine(EventStarter());
