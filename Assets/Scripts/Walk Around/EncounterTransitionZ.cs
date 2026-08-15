@@ -11,6 +11,7 @@ public class EncounterTransitionZ : MonoBehaviour
     [Header("Effect References")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Image flashOverlay; // A UI Panel covering the screen (white/black color)
+    [SerializeField] private CameraZoomZ cameraZoom;
 
     [Header("Animation Settings")]
     [SerializeField] private float zoomOutScale = 7f;
@@ -46,18 +47,14 @@ public class EncounterTransitionZ : MonoBehaviour
             playerMovement.SetMovementState(false);
         }
 
-        float originalZoom = mainCamera.orthographicSize;
-
-        // Phase 1: Zoom Out
-        float elapsed = 0f;
         float phaseTime = transitionDuration / 2f;
 
-        while (elapsed < phaseTime)
+        // Phase 1: Zoom Out using Cinemachine
+        if (cameraZoom != null)
         {
-            mainCamera.orthographicSize = Mathf.Lerp(originalZoom, zoomOutScale, elapsed / phaseTime);
-            elapsed += Time.deltaTime;
-            yield return null;
+            cameraZoom.ZoomTo(zoomOutScale, phaseTime);
         }
+        yield return new WaitForSeconds(phaseTime);
 
         // Phase 2: Screen Flashing
         if (flashOverlay != null)
@@ -72,14 +69,12 @@ public class EncounterTransitionZ : MonoBehaviour
             }
         }
 
-        // Phase 3: Zoom In rapidly before loading
-        elapsed = 0f;
-        while (elapsed < phaseTime)
+        // Phase 3: Zoom In rapidly before loading scene
+        if (cameraZoom != null)
         {
-            mainCamera.orthographicSize = Mathf.Lerp(zoomOutScale, zoomInScale, elapsed / phaseTime);
-            elapsed += Time.deltaTime;
-            yield return null;
+            cameraZoom.ZoomTo(zoomInScale, phaseTime);
         }
+        yield return new WaitForSeconds(phaseTime);
 
         // Load Turn-Based Battle Scene
         SceneManager.LoadScene(combatSceneName);
