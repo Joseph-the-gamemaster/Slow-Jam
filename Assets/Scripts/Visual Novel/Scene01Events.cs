@@ -16,6 +16,7 @@ public class Scene01Events : MonoBehaviour
     [SerializeField] GameObject mainTextObject;
     [SerializeField] GameObject nextButton;
     [SerializeField] int eventPos = 0;
+    [SerializeField] GameObject CharName;
 
     void Update()
     {
@@ -51,11 +52,21 @@ public class Scene01Events : MonoBehaviour
 
     IEnumerator EventOne()
     {
+        //event 1
         nextButton.SetActive(false);
-        TextBox.SetActive(true);
-        yield return new WaitForSeconds(2f);
         SideCharacter.SetActive(true);
+        TextBox.SetActive(true);
+        CharName.GetComponent<TMPro.TMP_Text>().text = "Haruka";
+        textToSpeak = "What do you mean, I'm right here dawg!";
+        TextBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLength = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1f);
+        yield return new WaitUntil(() => textLength == currentTextLength);
+        yield return new WaitForSeconds(0.5f);
         GirlSigh.Play();
+        eventPos = 2;
     }
 
     public void NextButton()

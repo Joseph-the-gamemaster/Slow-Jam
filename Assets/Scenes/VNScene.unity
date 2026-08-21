@@ -2093,6 +2093,7 @@ MonoBehaviour:
   mainTextObject: {fileID: 1381989997}
   nextButton: {fileID: 199033349}
   eventPos: 0
+  CharName: {fileID: 1963390735}
 --- !u!4 &2007785685
 Transform:
   m_ObjectHideFlags: 0
