@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VNScene.unity
     guid: 70cce4d6f43439a4abfb9bd8f80d00d7
+  - enabled: 1
+    path: Assets/Scenes/ParkScene01.unity
+    guid: 2d03be1afcc79714684427fc99504e6e
   m_configObjects: {}
