@@ -10,16 +10,17 @@ public class Scene01Events : MonoBehaviour
     public GameObject TextBox;
     [SerializeField] AudioSource GirlSigh;
     [SerializeField] AudioSource GirlGasp;
+    [SerializeField] string textToSpeak;
+    [SerializeField] int currentTextLength;
+    [SerializeField] int textLength;
+    [SerializeField] GameObject mainTextObject;
+    [SerializeField] GameObject nextButton;
+    [SerializeField] int eventPos = 0;
 
-        [SerializeField] string textToSpeak;
-        [SerializeField] int currentTextLength;
-        [SerializeField] int textLength;
-        [SerializeField] GameObject mainTextObject;
-
-        void Update()
-        {
-            textLength = TextCreator.charCount;
-        }
+    void Update()
+    {
+        textLength = TextCreator.charCount;
+    }
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class Scene01Events : MonoBehaviour
 
     IEnumerator EventStarter()
     {
+        // event 0
         yield return new WaitForSeconds(2f);
         FadeIn.SetActive(false);
         MC.SetActive(true);
@@ -43,11 +45,26 @@ public class Scene01Events : MonoBehaviour
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => textLength == currentTextLength);
         yield return new WaitForSeconds(0.5f);
+        nextButton.SetActive(true);
+        eventPos = 1;
+    }
 
-
+    IEnumerator EventOne()
+    {
+        nextButton.SetActive(false);
         TextBox.SetActive(true);
         yield return new WaitForSeconds(2f);
         SideCharacter.SetActive(true);
         GirlSigh.Play();
     }
+
+    public void NextButton()
+    {
+        if (eventPos == 1)
+        {
+            StartCoroutine(EventOne());
+        }
+    }
+
+
 }

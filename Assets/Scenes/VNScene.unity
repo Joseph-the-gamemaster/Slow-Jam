@@ -301,7 +301,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199033352}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2007785684}
+        m_TargetAssemblyTypeName: Scene01Events, Assembly-CSharp
+        m_MethodName: NextButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &199033352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,7 +1236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1312742247
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2079,6 +2091,8 @@ MonoBehaviour:
   currentTextLength: 0
   textLength: 0
   mainTextObject: {fileID: 1381989997}
+  nextButton: {fileID: 199033349}
+  eventPos: 0
 --- !u!4 &2007785685
 Transform:
   m_ObjectHideFlags: 0
