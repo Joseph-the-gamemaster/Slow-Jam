@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -112,7 +113,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             State = BattleState.WON;
-            EndBattle();
+            yield return StartCoroutine(EndBattle());
         }
         else
         {
@@ -149,7 +150,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             State = BattleState.LOST;
-            EndBattle();
+            yield return StartCoroutine(EndBattle());
         }
         else
         {
@@ -158,7 +159,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void EndBattle()
+    IEnumerator EndBattle()
     {
         if (State == BattleState.WON)
         {
@@ -168,6 +169,9 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = "You were defeated.";
         }
+        
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("OverWorld");
     }
 
     public void onAttackButton()
