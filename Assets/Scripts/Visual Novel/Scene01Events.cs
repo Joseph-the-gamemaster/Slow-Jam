@@ -77,6 +77,7 @@ public class Scene01Events : MonoBehaviour
         //event 2
         nextButton.SetActive(false);
         SideCharacter.SetActive(true);
+        MC.SetActive(false);
         TextBox.SetActive(true);
         CharName.GetComponent<TMPro.TMP_Text>().text = "Kasumi";
         textToSpeak = "Sorry, I'm just a baka, te he!";
